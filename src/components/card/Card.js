@@ -19,7 +19,7 @@ const Card = (props) => {
             <h4 className="card-title">{title}</h4>
             
             <i className="card-subtitle" dangerouslySetInnerHTML={{__html: highlight(subtitle)}}></i>
-            { itemsInArray ? (
+            { itemsInArray && props.highlight ? (
                 <ul className="card-items-wrapper">
                     <li className="card-items">{itemsInArray} found in items</li>
                 </ul>

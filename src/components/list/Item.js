@@ -40,7 +40,7 @@ class Item extends Component {
                 onMouseLeave={(e) => this.toggleActiveClass(-1)}
                 className={`item ${this.state.selected === this.props.index  ? this.scrollAndHighlight()  : ''}`} 
             >
-               <Card title={id} subtitle={name} items={items} info={address} highlight={this.props.highlight}/>
+               <Card title={id} subtitle={name} items={items} info={address} highlight={this.props.highlight || ''}/>
             </li>
         )
     }

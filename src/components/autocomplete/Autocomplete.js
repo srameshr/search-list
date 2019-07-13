@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import List from '../list/List'
+import TextInput from '../input/TextInput';
 import {
     ARROW_DOWN_KEY,
     ARROW_DOWN_KEY_CODE,
@@ -10,6 +11,7 @@ import {
 import {
     getUsers,
   } from '../../actions';
+import { IoIosSearch } from 'react-icons/io';
 
 class Autocomplete extends Component {
     
@@ -54,6 +56,7 @@ class Autocomplete extends Component {
     }
 
     handleOnChange = (e) => {
+        console.log(e.target.value)
         this.setState({ searchValue: e.target.value }, () => {
             this.props.getUsers({ query: this.state.searchValue });
         });
@@ -63,12 +66,18 @@ class Autocomplete extends Component {
         return (
             <div className="autocomplete-wrapper">
                 <div className="autocomplete-input-wrapper">
-                    <input
+                    {/* <input
                         value={this.state.searchValue}
                         type="text"
                         onKeyDown={this.onKeyDown}
                         placeholder="Search users by id, address, name"
                         onChange={this.handleOnChange}
+                    /> */}
+                    <TextInput
+                        onKeyDown={this.onKeyDown}
+                        placeholder="Search users by id, address, name"
+                        handleOnChange={this.handleOnChange}
+                        leftIcon={<IoIosSearch/>}
                     />
                 </div>
                 <List

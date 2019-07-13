@@ -116,3 +116,20 @@ body {
 .autocomplete-wrapper .list .item.active {
   background-color: #fffedb;
 }
+
+.input-left-icon-wrapper {
+  background: transparent;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  /* background: red; */
+  display: block;
+  /* height: 100px; */
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  /* background: #f3f3f3; */
+}
