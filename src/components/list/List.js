@@ -24,9 +24,7 @@ class List extends Component {
 
 
 const mapStateToProps = () => {
-    
     return {};
-  };
+  }  ;
   
-  export default connect(mapStateToProps, {
-  })(List);
+export default List

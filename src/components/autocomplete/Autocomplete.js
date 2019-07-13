@@ -17,13 +17,8 @@ class Autocomplete extends Component {
         super(props);
         this.state = {
             selected: -1,
-            data: [],
             searchValue: '',
         };
-    }
-
-    componentWillMount() {
-        this.props.getUsers();
     }
 
     resetSelectedListItem = (index) => {
@@ -59,7 +54,9 @@ class Autocomplete extends Component {
     }
 
     handleOnChange = (e) => {
-        this.setState({ searchValue: e.target.value })
+        this.setState({ searchValue: e.target.value }, () => {
+            this.props.getUsers({ query: this.state.searchValue });
+        });
     }
 
     render() {
@@ -79,7 +76,7 @@ class Autocomplete extends Component {
                     resetSelectedListItem={this.resetSelectedListItem}
                     ListEmptyComponent={this.ListEmptyComponent}
                     data={this.props.getUsersProps.success && this.props.getUsersProps.success.data || []}
-                    search={this.state.searchValue}
+                    highlight={this.state.searchValue}
                 />
             </div>
         )

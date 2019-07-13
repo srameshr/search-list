@@ -9,7 +9,7 @@ import {
       loading: false,
       success: {
         ok: false,
-        data: null,
+        data: [],
       },
       errors: {
         error: false,

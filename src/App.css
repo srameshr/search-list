@@ -1,10 +1,16 @@
 :root {
   --autocomplete-container-width: 300px;
 }
+
+body {
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+}
+
 .autocomplete-wrapper {
   width: var(--autocomplete-container-width);
   box-shadow: 1px 1px 1px 1px #ececec;
-  margin: 4em;
   border-radius: 2px;
 }
 
@@ -14,11 +20,16 @@
   cursor: pointer;
 }
 
+.card-wrapper span.highlight {
+  color: #639bee;
+}
+
 .card-wrapper .card-title {
-  font-size: 0.8em;
+  font-size: 0.75em;
   font-weight: bold;
   margin: 0;
   color: #40464d;
+  text-transform: capitalize;
 }
 
 .card-wrapper .card-info {
@@ -53,8 +64,8 @@
   margin: 0.5em 0;
   font-size: 0.7em;
   color: #4c5259;
-  border-top: 1px solid #d2d2d2;
-  border-bottom: 1px solid #d2d2d2;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
   padding: 0.5em 0;
 }
 

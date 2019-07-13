@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Card from '../card/Card';
 
 class Item extends Component {
     constructor(props) {
@@ -10,7 +11,7 @@ class Item extends Component {
         this.listElement = React.createRef();
     }
 
-    componentWillReceiveProps(prevProps, nextProps) {
+    componentWillReceiveProps(prevProps) {
         this.setState({ selected: prevProps.selected })
     }
 
@@ -30,6 +31,7 @@ class Item extends Component {
     }
 
     render() {
+        const { id, name, items, address } = this.props.data;
         return (
            <li
                 ref={this.listElement}
@@ -38,14 +40,7 @@ class Item extends Component {
                 onMouseLeave={(e) => this.toggleActiveClass(-1)}
                 className={`item ${this.state.selected === this.props.index  ? this.scrollAndHighlight()  : ''}`} 
             >
-                <div className="card-wrapper">
-                    <h4 className="card-title">{this.props.data.id}</h4>
-                    <i className="card-subtitle">{this.props.data.name}</i>
-                    <ul className="card-items-wrapper">
-                        <li className="card-items">John found in items</li>
-                    </ul>
-                    <p className="card-info">{this.props.data.address}</p>
-                </div>
+               <Card title={id} subtitle={name} items={items} info={address} highlight={this.props.highlight}/>
             </li>
         )
     }
