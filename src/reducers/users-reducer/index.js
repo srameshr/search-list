@@ -24,7 +24,7 @@ export default (state = INITIAL_STATE, action) => {
         case GET_USERS_LOADING:
       return {
         ...state,
-        getUser: {
+        getUsers: {
           ...state.getUser,
           loading: true,
           reset: false,
@@ -41,17 +41,17 @@ export default (state = INITIAL_STATE, action) => {
     case GET_USERS_SUCCESS:
       return {
         ...state,
-        getUser: {
-          ...state.getUser,
+        getUsers: {
+          ...state.getUsers,
           loading: false,
           reset: false,
           success: {
-            ...state.getUser.success,
+            ...state.getUsers.success,
             ok: true,
             data: action.payload,
           },
           errors: {
-            ...state.getUser.errors,
+            ...state.getUsers.errors,
             error: false,
           },
         },
@@ -59,16 +59,16 @@ export default (state = INITIAL_STATE, action) => {
     case GET_USERS_ERROR:
       return {
         ...state,
-        getUser: {
-          ...state.getUser,
+        getUsers: {
+          ...state.getUsers,
           loading: false,
           reset: false,
           success: {
-            ...state.getUser.success,
+            ...state.getUsers.success,
             ok: false,
           },
           errors: {
-            ...state.getUser.errors,
+            ...state.getUsers.errors,
             error: true,
             msg: action.payload,
           },
