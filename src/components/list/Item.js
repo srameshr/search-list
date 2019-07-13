@@ -35,7 +35,7 @@ class Item extends Component {
         return (
            <li
                 ref={this.listElement}
-                key={this.props.index}
+                key={id}
                 onMouseEnter={(e) => this.toggleActiveClass(this.props.index)}
                 onMouseLeave={(e) => this.toggleActiveClass(-1)}
                 className={`item ${this.state.selected === this.props.index  ? this.scrollAndHighlight()  : ''}`} 

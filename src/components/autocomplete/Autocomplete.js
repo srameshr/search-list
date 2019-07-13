@@ -56,7 +56,6 @@ class Autocomplete extends Component {
     }
 
     handleOnChange = (e) => {
-        console.log(e.target.value)
         this.setState({ searchValue: e.target.value }, () => {
             this.props.getUsers({ query: this.state.searchValue });
         });
@@ -66,13 +65,6 @@ class Autocomplete extends Component {
         return (
             <div className="autocomplete-wrapper">
                 <div className="autocomplete-input-wrapper">
-                    {/* <input
-                        value={this.state.searchValue}
-                        type="text"
-                        onKeyDown={this.onKeyDown}
-                        placeholder="Search users by id, address, name"
-                        onChange={this.handleOnChange}
-                    /> */}
                     <TextInput
                         onKeyDown={this.onKeyDown}
                         placeholder="Search users by id, address, name"
