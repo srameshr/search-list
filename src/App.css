@@ -1,12 +1,105 @@
+:root {
+  --autocomplete-container-width: 300px;
+}
 .autocomplete-wrapper {
-  width: 300px;
+  width: var(--autocomplete-container-width);
+  box-shadow: 1px 1px 1px 1px #ececec;
+  margin: 4em;
+  border-radius: 2px;
 }
 
-.autocomplete-wrapper .list {
-  width: 300px;
-  height: 100px;
-  overflow: scroll;
+.card-wrapper {
+  padding: 0.75em;
+  border-bottom: 1px solid #e6e6e6;
+  cursor: pointer;
+}
+
+.card-wrapper .card-title {
+  font-size: 0.8em;
+  font-weight: bold;
+  margin: 0;
+  color: #40464d;
+}
+
+.card-wrapper .card-info {
+  font-size: 0.7em;
+  margin: 0;
+  color: grey;
+}
+
+.card-wrapper .card-subtitle {
+  font-size: 0.75em;
+  color: #4c5259;
+  margin-bottom: 0.8em;
+  display: block;
+  margin-top: 0.3em;
+}
+
+.card-wrapper ul.card-items-wrapper {
+  list-style: none;
+  padding: 0;
+  margin: 0.3em 0;
+}
+
+.card-wrapper ul.card-items-wrapper li::before {
+  content: "\2022"; 
+  color: #4a8bf1;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+}
+
+.card-wrapper ul.card-items-wrapper li {
+  margin: 0.5em 0;
+  font-size: 0.7em;
+  color: #4c5259;
+  border-top: 1px solid #d2d2d2;
+  border-bottom: 1px solid #d2d2d2;
+  padding: 0.5em 0;
+}
+
+.autocomplete-wrapper .autocomplete-input-wrapper {
+  display: flex;
+}
+
+.autocomplete-wrapper input[type="text"] {
+  background-color: #f2f3f4;
+  border: none;
+  border-radius: 2px;
+  padding: 1em 0.5em;
+  width: var(--autocomplete-container-width);
+  font-size: 0.9em;;
+}
+
+.autocomplete-wrapper input[type="text"]:focus {
+  background-color: white;
+  border-bottom: #d0d0d0;
+}
+
+.autocomplete-wrapper ul.list {
+  width: var(--autocomplete-container-width);
+  /* min-height: 150px; */
+  max-height: 300px;
+  overflow-x: scroll;
   list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+
+.autocomplete-wrapper ul.list .empty-wrapper {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.autocomplete-wrapper ul.list .empty-wrapper p.empty-message {
+  text-align: center;
+  color: #7a8086;
+  font-size: 0.8em;
 }
 
 .autocomplete-wrapper .list .item.active {

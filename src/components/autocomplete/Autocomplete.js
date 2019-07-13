@@ -17,7 +17,8 @@ class Autocomplete extends Component {
         super(props);
         this.state = {
             selected: -1,
-            data: []
+            data: [],
+            searchValue: '',
         };
     }
 
@@ -30,7 +31,8 @@ class Autocomplete extends Component {
     }
 
     onKeyDown = ({ keyCode, key } = {}) => {
-        const { selected, result } = this.state
+        const { selected } = this.state
+        const { data = [] } = this.props.getUsersProps.success;
         if (
             (keyCode === ARROW_UP_KEY_CODE || key === ARROW_UP_KEY) &&
             selected > 0
@@ -40,7 +42,7 @@ class Autocomplete extends Component {
             }))
         } else if (
             (keyCode === ARROW_DOWN_KEY_CODE || key === ARROW_DOWN_KEY) &&
-            selected < result.length - 1
+            selected < data.length - 1
         ) {
             this.setState( prevState => ({
                 selected: prevState.selected + 1
@@ -49,18 +51,35 @@ class Autocomplete extends Component {
     }
 
     ListEmptyComponent = () => {
-        return <h3>No data found</h3>
+        return (
+            <div className="empty-wrapper">
+                <p className="empty-message">No User Found</p>
+            </div>
+        )
+    }
+
+    handleOnChange = (e) => {
+        this.setState({ searchValue: e.target.value })
     }
 
     render() {
         return (
             <div className="autocomplete-wrapper">
-                <input type="text" onKeyDown={this.onKeyDown}/>
+                <div className="autocomplete-input-wrapper">
+                    <input
+                        value={this.state.searchValue}
+                        type="text"
+                        onKeyDown={this.onKeyDown}
+                        placeholder="Search users by id, address, name"
+                        onChange={this.handleOnChange}
+                    />
+                </div>
                 <List
                     selected={this.state.selected}
                     resetSelectedListItem={this.resetSelectedListItem}
                     ListEmptyComponent={this.ListEmptyComponent}
-                    data={this.state.data}
+                    data={this.props.getUsersProps.success && this.props.getUsersProps.success.data || []}
+                    search={this.state.searchValue}
                 />
             </div>
         )

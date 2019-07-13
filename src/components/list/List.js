@@ -6,13 +6,13 @@ import Item from './Item'
 class List extends Component {
     
     renderElements = () => {
-        const { data } = this.props;
-        if (!data.length) {
+        const { data, search } = this.props;
+        if (!data.length && search) {
             return this.props.ListEmptyComponent();
         }
-        return this.props.data.map((e, i) => <Item {...this.props} index={i} key={i} />);
+        return this.props.data.map((data, i) => <Item {...this.props} data={data} index={i} key={i} />);
     }
-    
+
     render() {
         return (
             <ul className="list">
